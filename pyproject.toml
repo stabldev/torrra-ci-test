@@ -1,5 +1,5 @@
 [project]
-name = "torra-cli"
+name = "torrra"
 version = "0.1.0"
 description = "CLI-based torrent search and downloader"
 readme = "README.md"
@@ -8,10 +8,7 @@ requires-python = ">=3.13"
 dependencies = []
 
 [project.scripts]
-torra = "torra:main"
-
-[tool.hatch.build.targets.wheel]
-packages = ["src/torra"]
+torrra = "torrra:main"
 
 [build-system]
 requires = ["hatchling"]
