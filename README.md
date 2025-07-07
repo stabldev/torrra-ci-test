@@ -2,6 +2,10 @@
 
 > CLI-based torrent search and downloader
 
+![PyPI](https://img.shields.io/pypi/v/torrra)
+![Python](https://img.shields.io/pypi/pyversions/torrra)
+![License](https://img.shields.io/github/license/stabldev/torrra)
+
 `torrra` is a sleek and minimal command-line tool to search torrents from various indexers and download them- all from your terminal.
 
 ## ✨ Features
