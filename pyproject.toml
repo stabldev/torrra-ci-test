@@ -18,3 +18,8 @@ torrra = "torrra:main"
 [build-system]
 requires = ["hatchling"]
 build-backend = "hatchling.build"
+
+[dependency-groups]
+dev = [
+    "libtorrent>=2.0.11",
+]

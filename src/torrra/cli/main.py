@@ -1,9 +1,11 @@
 import importlib
+from prompt_toolkit.shortcuts import CompleteStyle
 import questionary
 from questionary import Choice
 from typing import List
 from rich.console import Console
 
+from torrra.downloader import download_magnet
 from torrra.indexers import INDEXERS
 from torrra.types import Magnet, Torrent
 
@@ -61,4 +63,7 @@ def main() -> None:
         console.print("[yellow]No magnet selected. Exiting...[/yellow]")
         return
 
-    console.print(f"[green]Magnet link:[/green] {selected_magnet.magnet_uri}")
+    save_path = questionary.path(
+        "Download path:", only_directories=True, complete_style=CompleteStyle.COLUMN
+    ).ask()
+    download_magnet(selected_magnet.magnet_uri, save_path)
