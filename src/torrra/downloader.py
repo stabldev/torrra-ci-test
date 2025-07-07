@@ -3,7 +3,6 @@ import time
 from rich.progress import (
     Progress,
     BarColumn,
-    DownloadColumn,
     TransferSpeedColumn,
     TimeRemainingColumn,
     TextColumn,
