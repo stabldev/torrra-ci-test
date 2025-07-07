@@ -1,7 +1,7 @@
 from typing import List
 from selectolax.parser import HTMLParser
 
-from torrra.types import Torrent
+from torrra.types import Magnet, Torrent
 from torrra.utils.html import parse_html
 from abc import ABC, abstractmethod
 
@@ -12,4 +12,8 @@ class BaseIndexer(ABC):
 
     @abstractmethod
     def search(self, query: str) -> List[Torrent]:
+        pass
+
+    @abstractmethod
+    def get_magnets(self, link: str) -> List[Magnet]:
         pass

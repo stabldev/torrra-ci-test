@@ -5,7 +5,7 @@ from typing import List
 from rich.console import Console
 
 from torrra.indexers import INDEXERS
-from torrra.types import Torrent
+from torrra.types import Magnet, Torrent
 
 console = Console()
 
@@ -24,9 +24,28 @@ def main() -> None:
         torrents: List[Torrent] = indexer.search(query)
 
     if not torrents:
-        console.print("[red]Cound not find any torrent. Exiting...[/red]")
+        console.print("[yellow]Could not find any torrents. Exiting...[/yellow]")
         return
 
     torrent_choices = [Choice(title=torrent.title, value=torrent) for torrent in torrents]
-    selected_torrent: Torrent = questionary.select("Select:", choices=torrent_choices).ask()
-    console.print(selected_torrent.link)
+    selected_torrent: Torrent | None = questionary.select("Select a torrent:", choices=torrent_choices).ask()
+
+    if not selected_torrent:
+        console.print("[yellow]No torrent selected. Exiting...[/yellow]")
+        return
+
+    with console.status(f"[bold green]Fetching magnet links for '{selected_torrent.title}'...[/bold green]"):
+        magnets: List[Magnet] = indexer.get_magnets(selected_torrent.link)
+
+    if not magnets:
+        console.print("[yellow]No magnet links found. Exiting...[/yellow]")
+        return
+
+    magnet_choices = [Choice(title=magnet.title, value=magnet) for magnet in magnets]
+    selected_magnet: Magnet | None = questionary.select("Select:", choices=magnet_choices).ask()
+
+    if not selected_magnet:
+        console.print("[yellow]No magnet selected. Exiting...[/yellow]")
+        return
+
+    console.print(f"[green]Magnet link:[/green] {selected_magnet.magnet_uri}")
