@@ -7,6 +7,7 @@ from rich.progress import (
     TimeRemainingColumn,
     TextColumn,
     TaskProgressColumn,
+    DownloadColumn,
 )
 from rich.console import Console
 
@@ -43,6 +44,7 @@ def download_magnet(magnet_uri: str, save_path: str):
         TextColumn("[bold blue]{task.fields[filename]}"),
         BarColumn(),
         TaskProgressColumn(),
+        DownloadColumn(),
         TransferSpeedColumn(),
         TimeRemainingColumn(),
         console=console,
