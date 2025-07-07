@@ -1,3 +1,1 @@
-INDEXERS = {
-    "yts.mx": "torrra.indexers.yts_mx"
-}
+INDEXERS = {"yts.mx": "torrra.indexers.yts_mx"}

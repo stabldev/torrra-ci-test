@@ -5,6 +5,7 @@ from torrra.types import Magnet, Torrent
 from torrra.utils.html import parse_html
 from abc import ABC, abstractmethod
 
+
 class BaseIndexer(ABC):
     def _get_parser(self, url: str) -> HTMLParser:
         html = parse_html(url)

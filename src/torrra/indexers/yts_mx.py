@@ -3,13 +3,16 @@ from typing import List
 from torrra.indexers.base import BaseIndexer
 from torrra.types import Magnet, Torrent
 
+
 class Indexer(BaseIndexer):
     def search(self, query: str) -> List[Torrent]:
         url = f"https://yts.mx/browse-movies/{query}/all/all/0/latest/0/all"
         parser = self._get_parser(url)
         res = []
 
-        nodes = parser.css("div.browse-content div.browse-movie-wrap div.browse-movie-bottom")
+        nodes = parser.css(
+            "div.browse-content div.browse-movie-wrap div.browse-movie-bottom"
+        )
         for node in nodes:
             title_node = node.css_first("a.browse-movie-title")
             year_node = node.css_first("div.browse-movie-year")
