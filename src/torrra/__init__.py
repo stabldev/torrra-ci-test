@@ -20,9 +20,13 @@ def main() -> None:
 
     indexer_name = questionary.select("Choose an indexer:", choices=list(INDEXERS_MAP.keys())).ask()
     indexer_module_path = INDEXERS_MAP[indexer_name]
+    indexer = importlib.import_module(indexer_module_path).Indexer()
 
     with console.status(f"[bold green]Searching {indexer_name} for '{query}'...[/bold green]"):
-        indexer = importlib.import_module(indexer_module_path)
-        torrents: List[TorrentPreview] = indexer.fetch_torrents(query)
+        torrents: List[TorrentPreview] = indexer.search(query)
+
+    if not torrents:
+        console.print("[red]Cound not find any. Exiting...[/red]")
+        return
 
     questionary.select("Select:", choices=[torrent.title for torrent in torrents]).ask()
