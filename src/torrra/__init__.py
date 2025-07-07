@@ -1,5 +1,6 @@
 import importlib
 import questionary
+from questionary import Choice
 from typing import List
 from rich.console import Console
 
@@ -26,4 +27,6 @@ def main() -> None:
         console.print("[red]Cound not find any torrent. Exiting...[/red]")
         return
 
-    questionary.select("Select:", choices=[torrent.title for torrent in torrents]).ask()
+    torrent_choices = [Choice(title=torrent.title, value=torrent) for torrent in torrents]
+    selected_torrent: Torrent = questionary.select("Select:", choices=torrent_choices).ask()
+    console.print(selected_torrent.link)
