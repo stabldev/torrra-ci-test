@@ -3,13 +3,10 @@ import questionary
 from typing import List
 from rich.console import Console
 
-from torrra.types import TorrentPreview
+from torrra.indexers import INDEXERS
+from torrra.types import Torrent
 
 console = Console()
-
-INDEXERS_MAP = {
-    "yts.mx": "torrra.indexers.yts_mx"
-}
 
 def main() -> None:
     query = questionary.text("Search:").ask()
@@ -18,15 +15,15 @@ def main() -> None:
         console.print("[red]No query entered. Exiting...[/red]")
         return
 
-    indexer_name = questionary.select("Choose an indexer:", choices=list(INDEXERS_MAP.keys())).ask()
-    indexer_module_path = INDEXERS_MAP[indexer_name]
+    indexer_name = questionary.select("Choose an indexer:", choices=list(INDEXERS.keys())).ask()
+    indexer_module_path = INDEXERS[indexer_name]
     indexer = importlib.import_module(indexer_module_path).Indexer()
 
     with console.status(f"[bold green]Searching {indexer_name} for '{query}'...[/bold green]"):
-        torrents: List[TorrentPreview] = indexer.search(query)
+        torrents: List[Torrent] = indexer.search(query)
 
     if not torrents:
-        console.print("[red]Cound not find any. Exiting...[/red]")
+        console.print("[red]Cound not find any torrent. Exiting...[/red]")
         return
 
     questionary.select("Select:", choices=[torrent.title for torrent in torrents]).ask()

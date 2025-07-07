@@ -1,7 +1,7 @@
 from typing import List
 from selectolax.parser import HTMLParser
 
-from torrra.types import TorrentPreview
+from torrra.types import Torrent
 from torrra.utils.html import parse_html
 from abc import ABC, abstractmethod
 
@@ -11,5 +11,5 @@ class BaseIndexer(ABC):
         return HTMLParser(html)
 
     @abstractmethod
-    def search(self, query: str) -> List[TorrentPreview]:
+    def search(self, query: str) -> List[Torrent]:
         pass
