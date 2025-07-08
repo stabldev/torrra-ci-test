@@ -1,6 +1,6 @@
 [project]
 name = "torrra"
-version = "0.1.0"
+version = "0.1.1"
 description = "CLI-based torrent search and downloader"
 readme = "README.md"
 authors = [{ name = "stabldev" }]
