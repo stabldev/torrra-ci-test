@@ -1,14 +1,10 @@
-# torrra 🎯
-
-> CLI-based torrent search and downloader
+# torrra
 
 ![PyPI](https://img.shields.io/pypi/v/torrra)
 ![Python](https://img.shields.io/pypi/pyversions/torrra)
 ![License](https://img.shields.io/github/license/stabldev/torrra)
 
-`torrra` is a sleek and minimal command-line tool to search torrents from various indexers and download them- all from your terminal.
-
-## ✨ Features
+## Features
 
 - Search torrents from multiple indexers (`YTS` supported; more coming)
 - Fetch magnet links directly
@@ -16,30 +12,44 @@
 - Pretty CLI with Rich-powered progress bars
 - Modular and easily extensible indexer architecture
 
-## 📦 Installation
+## Installation
 
-> Requires Python 3.11+ and [libtorrent-rasterbar](https://libtorrent.org/).
+Requirements: Python 3.11+ and [libtorrent](https://libtorrent.org/) (choose an installation method below)
 
-### 1. Install `libtorrent`
+### All-in-one installation
 
 ```bash
-# Linux (Arch)
-sudo pacman -S libtorrent-rasterbar
-# Linux (Debian/Ubuntu)
-sudo apt install python3-libtorrent
-
-# macOS (Homebrew)
-brew install libtorrent-rasterbar
-
-# Windows/macOS (Python wheels)
-pip install python-libtorrent
+pipx install "torrra[libtorrent]"
 ```
 
-> Note: For Windows users, the `python-libtorrent` wheel includes all dependencies and is the recommended method.
+> Works on all platforms using the pip-installed libtorrent.
 
-### 2. Install `torrra`
+### For system package users
+
 ```bash
-pip install torrra
+# arch
+sudo pacman -S libtorrent-rasterbar
+# debian/ubuntu
+sudo apt install python3-libtorrent
+# macOS (homebrew)
+brew install libtorrent-rasterbar
+
+# then install torrra with system lib access:
+pipx install --system-site-packages torrra
+```
+
+### Basic pip installation (for venv)
+
+```bash
+pip install "torrra[libtorrent]"
+```
+
+### Windows-specific
+
+```bash
+pip install "torrra[libtorrent]"
+# or using system libtorrent (if available):
+pip install --system "torrra"
 ```
 
 ### OR: compile from source (advanced)
@@ -47,7 +57,13 @@ pip install torrra
 See libtorrent's build guide:  
 https://libtorrent.org/building.html
 
-For local development, fork the repo, then:
+### Notes
+
+- The `[libtorrent]` extra installs the Python wheel version of libtorrent.
+- Using system packages (like `pacman`, `apt`, `brew`) may provide better performance.
+- Use `--system-site-packages` only if you already have system-wide libtorrent installed.
+
+### For local development:
 
 ```bash
 git clone https://github.com/yourusername/torrra
@@ -55,7 +71,7 @@ cd torrra
 uv sync
 ```
 
-## 💡 Usage
+## Usage
 
 ```bash
 torrra
@@ -69,7 +85,7 @@ Follow the prompts:
 4. Choose quality / magnet link
 5. Pick a download folder
  
-## 🧩 Indexer Support
+## Indexer Support
 
 Currently supported:
 
@@ -82,7 +98,7 @@ Planned:
 - Nyaa (anime-only, optional)
 - Community-driven additions
 
-## 🛠️ Dev Notes
+## Dev Notes
 
 - Modular indexer structure (`torrra/indexers`)
 - Extend `BaseIndexer` to add new sources
@@ -92,6 +108,6 @@ Planned:
   - `rich` for CLI visuals
   - `questionary` for input prompts
 
-## 📜 License
+## License
 
 MIT © [stabldev](https://github.com/stabldev)
