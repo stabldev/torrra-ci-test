@@ -1,4 +1,4 @@
-# torrra
+# `torrra`
 
 > A Python tool that lets you find and download torrents without leaving your CLI.
 
@@ -6,7 +6,7 @@
 ![Python](https://img.shields.io/pypi/pyversions/torrra)
 ![License](https://img.shields.io/github/license/stabldev/torrra)
 
-![torrra_demo](https://github.com/user-attachments/assets/2545eecc-389f-4082-b02e-92f0186ab598)
+![torrra_demo](https://github.com/user-attachments/assets/dacf5c5a-f24b-4e69-bd2f-dca4023ba867)
 
 ## Features
 
