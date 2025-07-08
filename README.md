@@ -1,8 +1,12 @@
 # torrra
 
+> A Python tool that lets you find and download torrents without leaving your CLI.
+
 ![PyPI](https://img.shields.io/pypi/v/torrra)
 ![Python](https://img.shields.io/pypi/pyversions/torrra)
 ![License](https://img.shields.io/github/license/stabldev/torrra)
+
+![torrra_demo](https://github.com/user-attachments/assets/2545eecc-389f-4082-b02e-92f0186ab598)
 
 ## Features
 
@@ -68,7 +72,9 @@ https://libtorrent.org/building.html
 ```bash
 git clone https://github.com/yourusername/torrra
 cd torrra
+# or use requirements.txt
 uv sync
+uv run torrra
 ```
 
 ## Usage
@@ -108,6 +114,12 @@ Planned:
   - `rich` for CLI visuals
   - `questionary` for input prompts
 
+## Contributing & Notes
+
+This project is a weekend-hacker side project- built for fun and learning. It's not a polished product (yet), but it works well enough for daily use!
+
+If you run into any bugs, have suggestions, or want to help improve it, feel free to [open an issue](https://github.com/stabldev/torrra/issues) or even send a pull request. All contributions are welcome.
+
 ## License
 
-MIT © [stabldev](https://github.com/stabldev)
+MIT. Copyright (c) [stabldev](https://github.com/stabldev)
