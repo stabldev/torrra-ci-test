@@ -1,4 +1,11 @@
-import libtorrent as lt
+import sys
+try:
+    import libtorrent as lt
+except ImportError:
+    print("Error: libtorrent not found")
+    print("Installation guide: https://github.com/stabldev/torrra?tab=readme-ov-file#-installation")
+    sys.exit(1)
+
 import time
 from rich.progress import (
     Progress,
