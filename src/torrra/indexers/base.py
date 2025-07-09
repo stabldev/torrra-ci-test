@@ -2,7 +2,7 @@ from typing import List
 from selectolax.parser import HTMLParser
 
 from torrra.types import Magnet, Torrent
-from torrra.utils.html import parse_html
+from torrra.helpers.html import parse_html
 from abc import ABC, abstractmethod
 
 
