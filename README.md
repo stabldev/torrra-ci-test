@@ -41,6 +41,8 @@ uv run torrra
 Currently supported:
 
 - YTS (movies)
+- MagnetDL
+- Movierulz (movies)
 
 Planned:
 
