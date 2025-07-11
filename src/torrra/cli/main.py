@@ -9,7 +9,7 @@ from torrra.cli import custom_styles
 from torrra.constants import UI_STRINGS
 from torrra.downloader import download_magnet
 from torrra.helpers.intro import show_welcome
-from torrra.indexers import INDEXERS
+from torrra.indexers import INDEXERS_MAP
 from torrra.types import Torrent
 from torrra.utils import get_indexer
 
@@ -28,9 +28,12 @@ def main() -> None:
 
     indexer_name = questionary.select(
         UI_STRINGS["prompt_choose_indexer"],
-        choices=list(INDEXERS.keys()),
+        choices=list(INDEXERS_MAP.keys()),
         style=custom_styles.SELECT,
     ).ask()
+    if not indexer_name:
+        return
+
     indexer = get_indexer(indexer_name)
 
     with console.status(
