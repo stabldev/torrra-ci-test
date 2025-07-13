@@ -10,9 +10,11 @@ from torrra.types import Torrent
 
 
 class Indexer(BaseIndexer):
+    BASE_URL = "https://magnetdl.hair"
+
     def search(self, query: str) -> List[Torrent]:
         normalized_query = quote_plus(query)
-        url = self._get_url(f"/lmsearch?q={normalized_query}&cat=lmsearch")
+        url = f"{self.BASE_URL}/lmsearch?q={normalized_query}&cat=lmsearch"
         parser = self._get_parser(url)
 
         results = []
@@ -30,7 +32,7 @@ class Indexer(BaseIndexer):
                 continue
 
             results.append({"title": title, "size": size})
-            urls.append(self._get_url(link))
+            urls.append(f"{self.BASE_URL}{link}")
 
         magnet_uris = asyncio.run(self._fetch_magnet_uris(urls))
 
@@ -43,9 +45,6 @@ class Indexer(BaseIndexer):
             torrents.append(Torrent(title=full_title, magnet_uri=magnet_uri))
 
         return torrents
-
-    def _get_url(self, url: str) -> str:
-        return f"https://magnetdl.hair{url}"
 
     async def _fetch_magnet_uris(self, urls: List[str]):
         async def fetch(client: httpx.AsyncClient, url: str):

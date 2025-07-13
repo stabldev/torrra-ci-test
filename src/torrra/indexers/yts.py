@@ -9,8 +9,10 @@ from torrra.types import Torrent
 
 
 class Indexer(BaseIndexer):
+    BASE_URL = "https://yts.mx"
+
     def search(self, query: str) -> List[Torrent]:
-        url = f"https://yts.mx/browse-movies/{query}/all/all/0/latest/0/all"
+        url = f"{self.BASE_URL}/browse-movies/{query}/all/all/0/latest/0/all"
         parser = self._get_parser(url)
 
         titles_links: List[tuple[str, str]] = []

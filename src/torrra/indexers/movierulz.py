@@ -11,11 +11,11 @@ from torrra.types import Torrent
 
 
 class Indexer(BaseIndexer):
-    BASE_URL = ""
+    BASE_URL = "https://www.5movierulz.life"
 
     def search(self, query: str) -> List[Torrent]:
         normalized_query = quote_plus(query)
-        url = f"https://www.5movierulz.voto/search_movies?s={normalized_query}"
+        url = f"{self.BASE_URL}/search_movies?s={normalized_query}"
         parser = self._get_parser(url)
 
         results = []
