@@ -2,7 +2,6 @@ import os
 import time
 
 import libtorrent as lt
-from rich.console import Console
 from rich.progress import (
     BarColumn,
     DownloadColumn,
@@ -14,8 +13,7 @@ from rich.progress import (
 )
 
 from torrra.constants import UI_STRINGS
-
-console = Console()
+from torrra.context import console
 
 
 def download_magnet(magnet_uri: str, path: str) -> None:
