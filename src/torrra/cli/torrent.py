@@ -7,12 +7,14 @@ from questionary import Choice
 from rich.console import Console
 
 from torrra.constants import UI_STRINGS
+from torrra.core.config import Config
 from torrra.core.downloader import download_magnet
 from torrra.indexers import INDEXERS_MAP
 from torrra.types import Torrent
 from torrra.utils import styles, welcome
 
 console = Console()
+config = Config()
 
 
 def run_torrent_flow() -> None:
@@ -36,7 +38,8 @@ def run_torrent_flow() -> None:
     with console.status(
         UI_STRINGS["status_searching"].format(indexer=indexer_name, query=query)
     ):
-        torrents: List[Torrent] = indexer.search(query)
+        max_results = config.get("general.max_results") or None
+        torrents: List[Torrent] = indexer.search(query, max_results)
 
     if not torrents:
         console.print(UI_STRINGS["error_no_results"])
@@ -54,8 +57,10 @@ def run_torrent_flow() -> None:
     if not selected_torrent:
         return
 
+    default_path = config.get("general.download_path")
     save_path = questionary.path(
         UI_STRINGS["prompt_download_path"],
+        default=default_path,
         only_directories=True,
         complete_style=CompleteStyle.COLUMN,
         style=styles.TEXT,
@@ -63,5 +68,8 @@ def run_torrent_flow() -> None:
     if not save_path:
         return
 
-    # TODO: handle config
+    if save_path != default_path and config.get("general.remember_last_path"):
+        config.set("general.download_path", save_path)
+
+    # initiate download
     download_magnet(selected_torrent.magnet_uri, save_path)
