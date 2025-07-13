@@ -2,9 +2,9 @@
 
 > A Python tool that lets you find and download torrents without leaving your CLI.
 
-![PyPI](https://img.shields.io/pypi/v/torrra)
-![AUR Version](https://img.shields.io/aur/version/torrra)
-![License](https://img.shields.io/github/license/stabldev/torrra)
+[![PyPI](https://img.shields.io/pypi/v/torrra)](https://pypi.org/project/torrra/)
+[![AUR Version](https://img.shields.io/aur/version/torrra)](https://aur.archlinux.org/packages/torrra)
+[![License](https://img.shields.io/github/license/stabldev/torrra)](https://github.com/stabldev/torrra/blob/main/LICENSE)
 
 ![demo](./docs/demo.gif)
 
