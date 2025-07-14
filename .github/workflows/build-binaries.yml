@@ -29,19 +29,18 @@ jobs:
           pip install pyinstaller
 
       - name: Build standalone binary
-        run: |
-          pyinstaller torrra.spec
+        run: pyinstaller torrra.spec
 
       - name: Rename binary by platform
         shell: bash
         run: |
           mkdir -p dist-out
           if [[ "$RUNNER_OS" == "Linux" ]]; then
-            cp dist/torrra dist-out/torrra-linux
+            cp dist/torrra dist-out/torrra-${GITHUB_REF_NAME}-linux
           elif [[ "$RUNNER_OS" == "Windows" ]]; then
-            cp dist/torrra.exe dist-out/torrra.exe
+            cp dist/torrra.exe dist-out/torrra-${GITHUB_REF_NAME}-windows.exe
           elif [[ "$RUNNER_OS" == "macOS" ]]; then
-            cp dist/torrra dist-out/torrra-macos
+            cp dist/torrra dist-out/torrra-${GITHUB_REF_NAME}-macos
           fi
 
       - name: Upload binary to release
