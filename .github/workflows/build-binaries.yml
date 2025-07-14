@@ -35,12 +35,14 @@ jobs:
         shell: bash
         run: |
           mkdir -p dist-out
+          ARCH=$(uname -m)
+
           if [[ "$RUNNER_OS" == "Linux" ]]; then
-            cp dist/torrra dist-out/torrra-${GITHUB_REF_NAME}-linux
+            cp dist/torrra "dist-out/torrra-${GITHUB_REF_NAME}-linux-${ARCH}"
           elif [[ "$RUNNER_OS" == "Windows" ]]; then
-            cp dist/torrra.exe dist-out/torrra-${GITHUB_REF_NAME}-windows.exe
+            cp dist/torrra.exe "dist-out/torrra-${GITHUB_REF_NAME}-windows-${ARCH}.exe"
           elif [[ "$RUNNER_OS" == "macOS" ]]; then
-            cp dist/torrra dist-out/torrra-${GITHUB_REF_NAME}-macos
+            cp dist/torrra "dist-out/torrra-${GITHUB_REF_NAME}-macos-${ARCH}"
           fi
 
       - name: Upload binary to release
