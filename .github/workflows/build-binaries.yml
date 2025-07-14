@@ -28,17 +28,6 @@ jobs:
           pip install -e .
           pip install pyinstaller
 
-      - name: Install UPX
-        shell: bash
-        run: |
-          if [[ "$RUNNER_OS" == "Linux" ]]; then
-            sudo apt-get update && sudo apt-get install -y upx
-          elif [[ "$RUNNER_OS" == "macOS" ]]; then
-            brew install upx
-          elif [[ "$RUNNER_OS" == "Windows" ]]; then
-            choco install upx
-          fi
-
       - name: Build standalone binary
         run: |
           pyinstaller torrra.spec
