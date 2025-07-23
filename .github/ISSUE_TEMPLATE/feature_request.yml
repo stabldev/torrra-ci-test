@@ -3,11 +3,6 @@ description: Suggest a new idea or improvement for torrra
 title: "[Feature] "
 labels: [enhancement]
 body:
-  - type: markdown
-    attributes:
-      value: |
-        Have an idea to improve **torrra**? Let us know!
-
   - type: textarea
     attributes:
       label: What feature would you like to see?
