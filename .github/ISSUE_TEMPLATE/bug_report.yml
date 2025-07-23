@@ -6,7 +6,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        Thanks for reporting an issue with **torrra**! Please fill out the form below so we can help debug faster.
+        Thanks for reporting an issue! Please fill out the form below so we can help debug faster.
 
   - type: textarea
     attributes:
