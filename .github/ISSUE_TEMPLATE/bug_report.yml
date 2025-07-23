@@ -18,7 +18,7 @@ body:
 
   - type: input
     attributes:
-      label: torrra version
+      label: Version
       description: Run `torrra --version` and paste the result here.
       placeholder: "torrra vX.Y.Z"
     validations:
