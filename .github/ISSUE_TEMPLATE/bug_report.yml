@@ -1,5 +1,5 @@
 name: "🐛 Bug Report"
-description: Report something that's not working as expected
+description: Report an issue with this tool
 title: "[Bug] "
 labels: [bug]
 body:
