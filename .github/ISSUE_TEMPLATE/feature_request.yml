@@ -23,3 +23,9 @@ body:
       placeholder: "e.g. XYZ could be triggered with a shortcut"
     validations:
       required: false
+
+  - type: checkboxes
+    attributes:
+      options:
+        - label: I checked existing issues to avoid duplicates
+          required: true
