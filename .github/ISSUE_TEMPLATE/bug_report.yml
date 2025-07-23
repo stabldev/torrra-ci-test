@@ -1,0 +1,69 @@
+name: "Bug Report"
+description: Report an issue with torrra
+title: "[Bug] "
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for reporting an issue with **torrra**! Please fill out the form below so we can help debug faster.
+
+  - type: textarea
+    attributes:
+      label: What happened?
+      description: A clear description of the bug. What were you trying to do?
+      placeholder: "e.g. I ran `torrra` and searched for XYZ, but it crashed with..."
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: What did you expect to happen?
+      placeholder: "e.g. I expected the search results to show up in the results table."
+    validations:
+      required: false
+
+  - type: textarea
+    attributes:
+      label: Steps to Reproduce
+      description: Help us reproduce the bug by providing steps or commands.
+      placeholder: |
+        1. Run `torrra`
+        2. Search for 'ubuntu'
+        3. Select a torrent
+        4. See error
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: torrra version
+      description: Run `torrra --version` and paste the result here.
+      placeholder: "torrra vX.Y.Z"
+    validations:
+      required: true
+
+  - type: input
+    attributes:
+      label: OS and architecture
+      placeholder: "e.g. Arch Linux x86_64"
+    validations:
+      required: true
+
+  - type: textarea
+    attributes:
+      label: Terminal Output or Logs
+      description: Paste any errors, logs, or stack traces you see in the terminal.
+      placeholder: "Copy-paste the output or error messages here..."
+      render: shell
+    validations:
+      required: false
+
+  - type: checkboxes
+    attributes:
+      label: Checklist
+      options:
+        - label: I have verified that I’m using the latest version of torrra
+          required: true
+        - label: I have searched existing issues to avoid duplicates
+          required: true
