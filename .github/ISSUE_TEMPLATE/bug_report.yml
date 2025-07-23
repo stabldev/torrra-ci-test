@@ -16,26 +16,6 @@ body:
     validations:
       required: true
 
-  - type: textarea
-    attributes:
-      label: What did you expect to happen?
-      description: A clear explanation of what you expected to happen instead of the issue you're seeing.
-      placeholder: "e.g. I expected the search results to show up in the results table."
-    validations:
-      required: false
-
-  - type: textarea
-    attributes:
-      label: Steps to Reproduce
-      description: Help us reproduce the bug by providing steps or commands.
-      placeholder: |
-        1. Run `torrra`
-        2. Search for 'ubuntu'
-        3. Select a torrent
-        4. See error
-    validations:
-      required: true
-
   - type: input
     attributes:
       label: torrra version
@@ -59,12 +39,3 @@ body:
       render: shell
     validations:
       required: false
-
-  - type: checkboxes
-    attributes:
-      label: Checklist
-      options:
-        - label: I have verified that I’m using the latest version of torrra
-          required: true
-        - label: I have searched existing issues to avoid duplicates
-          required: true
